@@ -16,16 +16,10 @@
 
 -   V: View (Visual)
 
-
 ##### Estrutura de Pasta
-
-
 
 #### Cadastro de Pessoas (cliente - padeiro)
 
 -   Nome
 -   Email
 -   telefone
-
-
-
