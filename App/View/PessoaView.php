@@ -1,4 +1,4 @@
-<?php include '/var/www/bakery-joaquim/App/Template/topo.php'; ?>
+<?php include 'App/Template/topo.php'; ?>
 
 <main>
 
@@ -8,4 +8,4 @@
 
 </main>
 
-<?php include '/var/www/bakery-joaquim/App/Template/rodape.php'; ?>
+<?php include 'App/Template/rodape.php'; ?>

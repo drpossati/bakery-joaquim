@@ -1,13 +1,12 @@
 <?php
-
-include_once "/var/www/bakery-joaquim/App/Model/PessoaModel.php";
+include "App/Model/PessoaModel.php";
 
 class PessoaController
 {
 
     public static function index()
     {
-        include '/var/www/bakery-joaquim/App/View/PessoaView.php';
+        include 'App/View/PessoaView.php';
     }
 
     public static function listagem()
@@ -16,7 +15,7 @@ class PessoaController
 
         $linhas = $model->retornaLinhas();
 
-        include '/var/www/bakery-joaquim/App/View/modulos/pessoa/ListaPessoa.php';
+        include 'App/View/modulos/pessoa/ListaPessoa.php';
     }
     public static function cadastro()
     {
@@ -26,7 +25,7 @@ class PessoaController
 
         $linha = $model->retornarId($id);
 
-        include '/var/www/bakery-joaquim/App/View/modulos/pessoa/FormPessoa.php';
+        include 'App/View/modulos/pessoa/FormPessoa.php';
     }
 
     public static function salvarC()

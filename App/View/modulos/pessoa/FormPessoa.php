@@ -1,5 +1,5 @@
 <!-- Aqui vai ficar topo, a navabar e o banner -->
-<?php include '/var/www/bakery-joaquim/App/Template/topo.php'; ?>
+<?php include 'App/Template/topo.php'; ?>
 
 <main>
     <fieldset>
@@ -30,4 +30,4 @@
 </main>
 
 <!-- rodapé -->
-<?php include '/var/www/bakery-joaquim/App/Template/rodape.php'; ?>
+<?php include 'App/Template/rodape.php'; ?>

@@ -1,5 +1,5 @@
 <?php
-include '/var/www/bakery-joaquim/App/DAO/PessoaDAO.php';
+include 'App/DAO/PessoaDAO.php';
 
 class PessoaModel
 {
