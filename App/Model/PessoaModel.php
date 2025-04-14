@@ -5,6 +5,15 @@ class PessoaModel
 {
     public $id, $nome, $email, $telefone;
 
+    // Inicializando os atributos de classe
+    public function __construct()
+    {
+        $this->id = NULL;
+        $this->nome = NULL;
+        $this->email = NULL;
+        $this->telefone = NULL;
+    }
+
     public function salvarM()
     {
         // Instancia da classe PessoaDAO

@@ -2,9 +2,7 @@
 
 <main>
 
-    <center>
-        <h3> Sejam Bem Vindos! </h3>
-    </center>
+    <h1 align="center">Sejam Bem vindos</h1>
 
 </main>
 
