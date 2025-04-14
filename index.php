@@ -1,5 +1,5 @@
 <?php
-include 'App/Controller/PesssoaController.php';
+include 'App/Controller/PessoaController.php';
 
 // Capturando a rota do usuário
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);

@@ -114,7 +114,7 @@ legend {
     font-weight: bold;
     color: #553a15;
     padding: 0 10px;
-    background-color: #f2ead5;
+    background-color: #f9f5eb;
     border: 1px solid #553a15;
     border-radius: 4px;
 }
@@ -184,4 +184,5 @@ footer {
 main {
     padding: 20px 5%;
     color: #553a15; /* Cor do texto ajustada */
+    background-color: #f9f5eb; /* Cor do corpo principal */
 }

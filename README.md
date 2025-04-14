@@ -22,18 +22,20 @@
 
     -   Apresenta as informações para o usuário
 
-##### Estrutura de Pasta
+##### Estrutura dos arquivos
 
--   Projeto
-    -   Tools
+-   Projeto (bakery-joaquim)
     -   App
         -   Controller
-        -   Template
         -   DAO
         -   Model
+        -   Template
+        -   Tools
         -   View
+    *   index.
+    *   README.MD
 
-#### Cadastro de Pessoas (cliente - padeiro)
+#### Cadastro de Pessoas (cliente ou padeiro)
 
 -   pessoa
     -   Nome VARCHAR(100)

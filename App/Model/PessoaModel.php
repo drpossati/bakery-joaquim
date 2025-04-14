@@ -8,10 +8,10 @@ class PessoaModel
     // Inicializando os atributos de classe
     public function __construct()
     {
-        $this->id = NULL;
-        $this->nome = NULL;
-        $this->email = NULL;
-        $this->telefone = NULL;
+        $this->id = null;
+        $this->nome = null;
+        $this->email = null;
+        $this->telefone = null;
     }
 
     public function salvarM()
