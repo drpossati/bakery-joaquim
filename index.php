@@ -27,7 +27,7 @@ switch ($url) {
         break;
 
     default:
-        echo 'Erro 404';
+        PessoaController::naoEncontrado();
         break;
 }
 

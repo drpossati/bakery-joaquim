@@ -9,6 +9,12 @@ class PessoaController
         include 'App/View/PessoaView.php';
     }
 
+    public static function naoEncontrado()
+    {
+        include 'App/View/naoencontrado.php';
+    }
+
+
     public static function listagem()
     {
         $model = new PessoaModel();
