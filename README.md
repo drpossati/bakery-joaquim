@@ -31,8 +31,10 @@
         -   Model
         -   Template
         -   Tools
+            -   css
+            -   imgs
         -   View
-    *   index.
+    *   index
     *   README.MD
 
 #### Cadastro de Pessoas (cliente ou padeiro)
