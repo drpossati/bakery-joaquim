@@ -27,9 +27,11 @@ class PessoaController
     {
         $model = new PessoaModel();
 
-        $id = (int) $_GET['id'];
-
-        $linha = $model->retornarId($id);
+        if(isset($_GET['id']))
+        {
+            $id = (int) $_GET['id'];
+            $linha = $model->retornarId($id);
+        }
 
         include 'App/View/modulos/pessoa/FormPessoa.php';
     }
