@@ -22,7 +22,7 @@ class PessoaDAO
 
     public function select()
     {
-        $sql = "SELECT * FROM pessoa";
+        $sql = "SELECT pessoa.nome as nome, pessoa.email as email, pessoa.telefone as telefone, user.senha_hash as senha FROM pessoa INNER JOIN user ON pessoa.id = user.pessoa_id"; 
 
         $stmt = $this->acesso_banco->prepare($sql);
         $stmt->execute();
@@ -32,18 +32,61 @@ class PessoaDAO
 
     }
 
+    // Função para gerar salt aleatório
+    private function gerarSalt($length = 64)
+    {
+        return bin2hex(random_bytes($length / 2));
+    }
+
+    // Função para gerar hash SHA-512 da senha
+    private function gerarHash($salt, $senha)
+    {
+        return hash('sha512', $senha . $salt);
+    }
+
     public function insert(PessoaModel $model)
     {
-        $sql = "INSERT INTO pessoa (nome, email, telefone) VALUES (?, ?, ?)";
+        /* Usando transações para salvar dados em duas tabelas diferentes */
+        try {
 
-        $stmt = $this->acesso_banco->prepare($sql);
+            //Inicio da transação
+            $this->acesso_banco->beginTransaction();
 
-        $stmt->bindValue(1, $model->nome);
-        $stmt->bindValue(2, $model->email);
-        $stmt->bindValue(3, $model->telefone);
+            // Insert tabela pessoa
 
-        $stmt->execute();
+            $sql_pessoa = "INSERT INTO pessoa (nome, email, telefone) VALUES (?, ?, ?)";
 
+            $stmt_pessoa = $this->acesso_banco->prepare($sql_pessoa);
+
+            $stmt_pessoa->bindValue(1, $model->nome);
+            $stmt_pessoa->bindValue(2, $model->email);
+            $stmt_pessoa->bindValue(3, $model->telefone);
+
+            $stmt_pessoa->execute();
+
+            // Obtém o id do último registro inserido em pessoa
+            $pessoa_id = $this->acesso_banco->lastInsertId();
+
+            $sql_user = "INSERT INTO user (pessoa_id, senha_hash, salt) VALUES (?, ?, ?)";
+
+            $salt = $this->gerarSalt();
+            $senha_hash = $this->gerarHash($salt, $model->senha);
+
+            $stmt_user = $this->acesso_banco->prepare($sql_user);
+            $stmt_user->bindValue(1, $pessoa_id);
+            $stmt_user->bindValue(2, $senha_hash);
+            $stmt_user->bindValue(3, $salt);
+
+            $stmt_user->execute();
+
+            // Confirma as alterações no banco de dados
+            $this->acesso_banco->commit();
+
+        } catch (PDOException $e) {
+            // Em caso de erro, reverte tudo
+            $this->acesso_banco->rollBack();
+            echo "Erro: " . $e->getMessage();
+        }
     }
 
     public function selectId(int $id)
@@ -60,7 +103,7 @@ class PessoaDAO
 
     public function update(PessoaModel $model)
     {
-        $sql = "UPDATE pessoa SET nome = ?, email = ?, telefone = ? WHERE id = ?" ;
+        $sql = "UPDATE pessoa SET nome = ?, email = ?, telefone = ? WHERE id = ?";
 
         $stmt = $this->acesso_banco->prepare($sql);
 
@@ -68,11 +111,11 @@ class PessoaDAO
         $stmt->bindValue(2, $model->email);
         $stmt->bindValue(3, $model->telefone);
         $stmt->bindValue(4, $model->id);
-    
+
         $stmt->execute();
     }
 
-    public function delete(int $id) 
+    public function delete(int $id)
     {
         $sql = "DELETE FROM pessoa WHERE id = ?";
 

@@ -22,6 +22,9 @@
             <label for="telefone" class="obrigatorio" >Telefone</label>
             <input id="telefone" name="telefone" type="telefone" maxlength="15" value="<?= $linha['telefone'] ?>" />
 
+            <label for="senha" class="obrigatorio" >Senha</label>
+            <input id="senha" name="senha" type="password" value="<?= $linha['senha'] ?>" />
+
             <div class="form-button">
                 <button type="submit"> SALVAR </button>
             </div>

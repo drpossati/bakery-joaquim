@@ -21,14 +21,16 @@ class PessoaController
 
         $linhas = $model->retornaLinhas();
 
+        var_dump($linhas);
+        exit;
+
         include 'App/View/modulos/pessoa/ListaPessoa.php';
     }
     public static function cadastro()
     {
         $model = new PessoaModel();
 
-        if(isset($_GET['id']))
-        {
+        if (isset($_GET['id'])) {
             $id = (int) $_GET['id'];
             $linha = $model->retornarId($id);
         }
@@ -44,6 +46,7 @@ class PessoaController
         $model->nome = $_POST['nome'];
         $model->email = $_POST['email'];
         $model->telefone = $_POST['telefone'];
+        $model->senha = $_POST['senha'];
 
         $model->salvarM();
 

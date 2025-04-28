@@ -128,7 +128,7 @@ label {
 }
 
 /* Estilo dos campos de entrada */
-input[type="text"], input[type="email"], input[type="telefone"] {
+input[type="text"], input[type="email"], input[type="telefone"], input[type="password"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #553a15;

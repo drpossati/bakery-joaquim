@@ -3,7 +3,7 @@ include 'App/DAO/PessoaDAO.php';
 
 class PessoaModel
 {
-    public $id, $nome, $email, $telefone;
+    public $id, $nome, $email, $telefone, $senha;
 
     // Inicializando os atributos de classe
     public function __construct()
@@ -12,6 +12,7 @@ class PessoaModel
         $this->nome = null;
         $this->email = null;
         $this->telefone = null;
+        $this->senha = null;
     }
 
     public function salvarM()

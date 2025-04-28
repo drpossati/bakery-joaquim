@@ -12,6 +12,7 @@
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Telefone</th>
+                <th>Senha</th>
                 <th>  </th>
                 <th>  </th>
 
@@ -24,6 +25,7 @@
                     <td><?= $item->nome ?></td>
                     <td><?= $item->email ?></td>
                     <td><?= $item->telefone ?></td>
+                    <td><?= $item->senha ?></td>
                     <td><a href="/pessoa/cadastro?id=<?= $item->id ?>" ><button>EDITAR</button></a></td>
                     <td><a href="/pessoa/delete?id=<?= $item->id ?>" ><button>EXCLUIR</button></a></td>
                 </tr>
