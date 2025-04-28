@@ -1,5 +1,5 @@
 <!-- Aqui vai ficar topo, a navabar e o banner -->
-<?php include 'App/Template/topo.php'; ?>
+<?php include 'App/Template/topo.php' ?>
 
 <main>
     <fieldset>

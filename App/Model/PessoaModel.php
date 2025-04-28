@@ -3,7 +3,7 @@ include 'App/DAO/PessoaDAO.php';
 
 class PessoaModel
 {
-    public $id, $nome, $email, $telefone, $senha;
+    public $id, $nome, $email, $telefone, $senha, $dataLogin;
 
     // Inicializando os atributos de classe
     public function __construct()
@@ -13,6 +13,7 @@ class PessoaModel
         $this->email = null;
         $this->telefone = null;
         $this->senha = null;
+        $this->dataLogin = null;
     }
 
     public function salvarM()
@@ -44,8 +45,9 @@ class PessoaModel
         return $dao->selectId($id);
     }
 
-    public function deletar(int $id) {
-        
+    public function deletar(int $id)
+    {
+
         $dao = new PessoaDAO();
 
         $dao->delete($id);

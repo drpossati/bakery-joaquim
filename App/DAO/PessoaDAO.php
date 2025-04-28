@@ -22,7 +22,15 @@ class PessoaDAO
 
     public function select()
     {
-        $sql = "SELECT pessoa.nome as nome, pessoa.email as email, pessoa.telefone as telefone, user.senha_hash as senha FROM pessoa INNER JOIN user ON pessoa.id = user.pessoa_id"; 
+        $sql = "SELECT 
+                    pessoa.id as id, 
+                    pessoa.nome as nome, 
+                    pessoa.email as email, 
+                    pessoa.telefone as telefone, 
+                    user.senha_hash as senha, 
+                    user.dataCriacao as dataLogin
+                FROM pessoa 
+                INNER JOIN user ON pessoa.id = user.pessoa_id"; 
 
         $stmt = $this->acesso_banco->prepare($sql);
         $stmt->execute();
