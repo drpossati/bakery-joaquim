@@ -23,14 +23,14 @@ class PessoaDAO
     public function select()
     {
         $sql = "SELECT 
-                    pessoa.id as id, 
-                    pessoa.nome as nome, 
-                    pessoa.email as email, 
-                    pessoa.telefone as telefone, 
-                    user.senha_hash as senha, 
-                    user.dataCriacao as dataLogin
+                    pessoa.id AS id, 
+                    pessoa.nome AS nome, 
+                    pessoa.email AS email, 
+                    pessoa.telefone AS telefone, 
+                    user.senha_hash AS senha, 
+                    user.dataCriacao AS dataLogin
                 FROM pessoa 
-                INNER JOIN user ON pessoa.id = user.pessoa_id"; 
+                INNER JOIN user ON pessoa.id = user.pessoa_id";
 
         $stmt = $this->acesso_banco->prepare($sql);
         $stmt->execute();
@@ -105,6 +105,25 @@ class PessoaDAO
         $stmt->bindValue(1, $id);
         $stmt->execute();
 
+        // array de elementos associados
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function selectLogin(string $email)
+    {
+        $sql = "SELECT
+                    pessoa.id AS id, 
+                    pessoa.email AS email, 
+                    pessoa.nome AS nome, 
+                    user.senha_hash AS senha,
+                    user.salt AS salt 
+                FROM pessoa INNER JOIN user 
+                    ON pessoa.id = user.pessoa_id 
+                WHERE pessoa.email = ?";
+
+        $stmt = $this->acesso_banco->prepare($sql);
+        $stmt->bindValue(1, $email);
+        $stmt->execute();
         // array de elementos associados
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
